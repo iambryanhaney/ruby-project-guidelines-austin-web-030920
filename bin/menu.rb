@@ -106,5 +106,6 @@ while(menu_current.class != String) do
   menu_current.display
   user_input = gets.chomp
   menu_current = menu_current.action(user_input)
+  menu_current.clear
 #   puts "menu_current = #{menu_current}"
 end
