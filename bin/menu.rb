@@ -16,8 +16,9 @@ end
 menu_main = Menu.new
 menu_search_by_performer = Menu.new
 menu_search_by_venue = Menu.new
-menu_search_by_name = Menu.new
+menu_search_by_type = Menu.new
 menu_event_info = Menu.new
+menu_view_tickets = Menu.new
 menu_login = Menu.new
 menu_create_user = Menu.new
 menu_home = Menu.new
@@ -46,8 +47,8 @@ def menu_create_user.action(user_input)
 end
 
 # Menu: main
-menu_main.text = "Main Menu\n\n1. Search by Performer\n2. Search by venue\n3. Search by event name\n4. TBD\n5. Quit"
-menu_main.links = {1 => menu_search_by_performer, 2 => menu_search_by_venue,3 => menu_search_by_name, 5 => "Quit"}
+menu_main.text = "Main Menu\n\n1. Search by Performer\n2. Search by venue\n3. Search by event name\n4. View tickets\n5. Quit"
+menu_main.links = {1 => menu_search_by_performer, 2 => menu_search_by_venue,3 => menu_search_by_name,4 => menu_view_tickets, 5 => "Quit"}
 def menu_main.action(user_input)
     # filter user input
     # return self if input is out of range
@@ -55,12 +56,21 @@ def menu_main.action(user_input)
     @links[user_input.to_i]
 end
 
-# Menu: search by event name
-menu_search_by_name.text = "Which event?"
-menu_search_by_name.links = {0 => menu_main}
-def menu_search_by_name.action(user_input)
+# Menu: view tickets
+menu_view_tickets.text = " "
+menu_view_tickets.links = {0 => menu_main}
+def menu_view_tickets.action(user_input)
+    # events = user.my_tickets
+    # events.each_with_index do |event, i| puts "#{i}. #{event[:title]}    Price: #{event[:price]}\n"
+    self.links[0]
+end
+
+# Menu: search by type
+menu_search_by_type.text = "Which event?"
+menu_search_by_type.links = {0 => menu_main}
+def menu_search_by_type.action(user_input)
     #API calls
-    puts "We searched by event name using user_input: #{user_input}!"
+    puts "We searched by type using user_input: #{user_input}!"
     self.links[0]
 end
 
