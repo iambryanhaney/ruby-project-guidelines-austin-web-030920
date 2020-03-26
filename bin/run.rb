@@ -17,12 +17,7 @@ response = gets.chomp
 
 #main menu
 clear
-puts "What would you like to do?\n"
-puts "1. Search events by event title"
-puts "2. Search events by performer"
-puts "3. Search events by venue"
-puts "4. TBD"
-puts "5. Quit\n"
+puts "What would you like to do?\n1. Search events by event title\n2. Search events by performer\n3. Search events by venue\n4. TBD\n5. Quit\n"
 
 input = gets.chomp
     
