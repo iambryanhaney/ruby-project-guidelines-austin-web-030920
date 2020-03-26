@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
 
     # end
 
-    
+    def buy_ticket(event)
+        Ticket.create(self, event)
+    end
 end

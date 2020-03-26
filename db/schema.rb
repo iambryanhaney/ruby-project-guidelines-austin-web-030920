@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.string "performer"
+    t.float  "price"
   end
 
   create_table "tickets", force: :cascade do |t|
