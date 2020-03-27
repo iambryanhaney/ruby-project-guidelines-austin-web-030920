@@ -1,7 +1,12 @@
-require 'pry'
+
+
+puts "\n\n...greetings from the MENU!\n\n"
 
 class Menu
     attr_accessor :text, :links
+
+    @@home = nil
+
     def display
         puts @text
     end
@@ -9,6 +14,29 @@ class Menu
     def clear
         (system "clear") || system("cls")
     end
+
+
+
+
+    def self.home
+        @@home
+    end
+
+    def self.home=(menu_object)
+        @@home = menu_object
+    end
+
+
+    def self.start_menu
+        menu_current = self.home
+        while(menu_current.class != String) do
+            menu_current.display
+            user_input = gets.chomp
+            menu_current = menu_current.action(user_input)
+            menu_current.clear
+        end
+    end
+
 end
 
 
@@ -48,7 +76,7 @@ end
 
 # Menu: main
 menu_main.text = "Main Menu\n\n1. Search by Performer\n2. Search by venue\n3. Search by event name\n4. View tickets\n5. Quit"
-menu_main.links = {1 => menu_search_by_performer, 2 => menu_search_by_venue,3 => menu_search_by_name,4 => menu_view_tickets, 5 => "Quit"}
+menu_main.links = {1 => menu_search_by_performer, 2 => menu_search_by_venue, 3 => menu_search_by_type, 4 => menu_view_tickets, 5 => "Quit"}
 def menu_main.action(user_input)
     # filter user input
     # return self if input is out of range
@@ -104,18 +132,4 @@ def menu_event_info.action(user_input)
     self.links[0]
 end
 
-# **************************************
-#
-#     BEGIN MENU CONTROL
-# 
-# **************************************
-
-
-menu_current = menu_main
-while(menu_current.class != String) do
-  menu_current.display
-  user_input = gets.chomp
-  menu_current = menu_current.action(user_input)
-  menu_current.clear
-#   puts "menu_current = #{menu_current}"
-end
+Menu.home = menu_home
