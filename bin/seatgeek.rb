@@ -9,12 +9,14 @@ class SeatGeek
         self.query("events?performers.slug=#{slug}&client_id=#{CLIENT_ID}")["events"]
     end
 
-    def self.search_by_venue(venue)
-
+    def self.search_by_city(city)
+        slug = city.split(" ").join("-")
+        self.query("events?venue.city=#{slug}&client_id=#{CLIENT_ID}")["events"]
     end
 
-    def self.search_by_taxonomies(taxonomies)
-        "?taxonomies.name=" + "Monster Trucks, Sports, Magic".split(",").map{|str| str.split(" ")}.map{|array| array.join("_")}.join("&taxonomies.name=")
+    def self.search_by_tags(tags)
+        slug = tags.split(",").map{|str| str.split(" ")}.map{|array| array.join("_")}.join("&taxonomies.name=")
+        self.query("events?taxonomies.name=#{slug}&client_id=#{CLIENT_ID}")["events"]
     end
 
     def self.query(qstring)
