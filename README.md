@@ -57,3 +57,8 @@ Projects need to be approved prior to launching into them, so take some time to 
 # in config/environment.rb add this line:
 ActiveRecord::Base.logger = nil
 ```
+
+## Installation / Setup:
+brew install imagemagick@6 && brew link imagemagick@6 --force 
+bundle install 
+rake db:migrate
