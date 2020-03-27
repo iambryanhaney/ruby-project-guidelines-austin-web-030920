@@ -1,6 +1,5 @@
 
 
-puts "\n\n....greetings from SeatGeek!\n\n"
 
 class SeatGeek
     CLIENT_ID = "MjExNDI3ODR8MTU4NTE2MzM2OS43"

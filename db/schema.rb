@@ -15,6 +15,10 @@ ActiveRecord::Schema.define(version: 3) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.float  "price"
+    t.string "date"
+    t.string "time"
+    t.string "url"
+    t.string "image_url"
   end
 
   create_table "tickets", force: :cascade do |t|
